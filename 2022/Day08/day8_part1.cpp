@@ -108,9 +108,9 @@ int main()
 
     txtio;
 
-    ifstream file;
-    file.open("input.txt");
-    if(!file.is_open()) cout<<"unable to open the file"<<endl;
+    // ifstream file;
+    // file.open("input.txt");
+    // if(!file.is_open()) cout<<"unable to open the file"<<endl;
 
     string s;    
     vector<string> ar;
@@ -122,47 +122,56 @@ int main()
     int sz= ar.size();
     int top_layer = ar[0].length();
 
-    ll ans = 2*sz;
-    ans+=2*(top_layer-2);
-
-    print("prev ans: "); cout<<ans<<endl;
-
     vector<vector<bool>> counter(sz, vector<bool>(top_layer, 0));
 
+    for(int i=0; i<sz; i++){
+        for(int j=0; j<top_layer; j++){
+            int k, mx, temp = ar[i][j]-'0';
+            int vis=4;
+            // up
+            k=i-1;
+            for(k; k>=0; k--){
+                mx = ar[k][j]-'0';
+                if(mx>=temp){         // !visible
+                    vis--;
+                    break;
+                }      
+            }
 
-    for(int i=1; i<sz-1; i++){
-        int mx = ar[i][0]-'0';
-        for(int j=1; j<top_layer-1; j++){
-            int temp = (ar[i][j]-'0');
-            if(temp>mx) counter[i][j]=1;           // visible 
-            mx = max(mx, temp);
-        }
-        
-        mx = ar[i][top_layer-1]-'0';
-        for(int j=top_layer-2; j>0; j--){
-            int temp = (ar[i][j]-'0');
-            if(temp>mx) counter[i][j]=1;
-            mx= max(mx, temp);
+            // down 
+            k=i+1;
+            for(k; k<sz; k++){
+                mx = ar[k][j]-'0';
+                if(mx>=temp){        // !visible
+                    vis--;
+                    break;
+                }
+            }
+
+            // left
+            k=j-1;
+            for(k; k>=0; k--){
+                mx = ar[i][k]-'0';
+                if(mx>=temp){          // !visible
+                    vis--;
+                    break;
+                }
+            }
+
+            // right
+            k=j+1;
+            for(k; k<top_layer; k++){
+                mx = ar[i][k]-'0';
+                if(mx>=temp){         // !visible
+                    vis--; 
+                    break;
+                }
+            }
+
+            if(vis) counter[i][j]=1;
         }
     }
 
-    for(int i=1; i<top_layer-1; i++){
-        int mx = ar[0][i]-'0';
-        for(int j=1; j<sz-1; j++){
-            int temp = ar[i][j]-'0';
-            if(temp>mx) counter[i][j]=1;
-            mx= max(mx, temp);
-        }
-
-        mx = ar[sz-1][i]-'0';
-        for(int j=sz-2; j>0; j--){
-            int temp = ar[i][j]-'0';
-            if(temp>mx) counter[i][j]=1;
-            mx= max(mx, temp);
-        }
-    }
-
-    print("---------------");
     for(int i=0; i<sz; i++){
         for(int j=0; j<top_layer; j++){
             cout<<counter[i][j];
@@ -171,15 +180,15 @@ int main()
     }
 
 
-
-    for(int i=1; i<sz-1; i++){
-        for(int j=1;j<top_layer-1; j++){
+    ll ans=0;
+    for(int i=0; i<sz; i++){
+        for(int j=0;j<top_layer; j++){
             ans+=counter[i][j];
         }
     }
 
-
-    cout<<"answer: "<<ans<<endl;
+    print("---------------");
+    cout<<"answer: "<<ans<<" trees are visible"<<endl;
 
     
 
