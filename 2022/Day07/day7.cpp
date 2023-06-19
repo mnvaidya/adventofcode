@@ -140,11 +140,11 @@ node* findChild(string namee, node* root){
 
 void dfs(node* root, int space){
     if(!root) return;
-    for(int i=0; i<space; i++) cout<<" ";
+    // for(int i=0; i<space; i++) cout<<" ";       // visualization
     
-    cout<<"-"<<root->name<<" ("<<root->type;
-    if(root->type=="file") cout<<", size="<<root->val<<")"<<endl;
-    else cout<<")"<<endl;
+    // cout<<"-"<<root->name<<" ("<<root->type;
+    // if(root->type=="file") cout<<", size="<<root->val<<")"<<endl;       // visualization purpose
+    // else cout<<")"<<endl;
 
     root->sum+=root->val;
 
@@ -231,19 +231,19 @@ int main()
 
     }
 
-    cout<<"\n\n"<<endl;
+    // cout<<"\n\n"<<endl;
     dfs(root2, 0);
 
 
-    print("total directories having size <= 100000 are ");
-    print(cnt);
+    // print("total directories having size <= 100000 are ");
+    // print(cnt);
 
 
-    cout<<"\n";
+    // cout<<"\n";
     ll total_sum =0;
 
     for(auto it=st.begin(); it!=st.end(); it++){
-        cout<<it->first<<" "<<it->second<<endl;
+        // cout<<it->first<<" "<<it->second<<endl;
         total_sum+=it->first;
         rootdirvalue= it->first;
     }
@@ -255,7 +255,8 @@ int main()
 
     for(auto it=st.begin(); it!=st.end(); it++){
         if(it->first>=needed){
-            cout<<"the answer is: "<<it->first<<endl;
+            // cout<<"the answer is: "<<it->first<<endl;
+            cout<<it->first<<endl;
             break;
         }
     }

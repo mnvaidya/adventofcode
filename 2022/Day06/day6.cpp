@@ -46,7 +46,7 @@ using namespace __gnu_pbds;
         cin >> ar[i];
 #define txtio                         \
     freopen("input.txt", "r", stdin); \
-    freopen("output.txt", "w", stdout);
+    freopen("output2.txt", "w", stdout);
 
 const int mod = 1e9 + 7;
 const int MOD = 5; // mod_division

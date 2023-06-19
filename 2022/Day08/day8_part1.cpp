@@ -49,7 +49,7 @@ template <typename T> string type_name();
         cin >> ar[i];
 #define txtio                         \
     freopen("input.txt", "r", stdin); \
-    freopen("output.txt", "w", stdout);
+    freopen("output1.txt", "w", stdout);
 
 const int mod = 1e9 + 7;
 const int MOD = 5; // mod_division
@@ -172,12 +172,12 @@ int main()
         }
     }
 
-    for(int i=0; i<sz; i++){
-        for(int j=0; j<top_layer; j++){
-            cout<<counter[i][j];
-        }
-        cout<<endl;
-    }
+    // for(int i=0; i<sz; i++){              // visualization purpose
+    //     for(int j=0; j<top_layer; j++){
+    //         cout<<counter[i][j];
+    //     }
+    //     cout<<endl;
+    // }
 
 
     ll ans=0;
@@ -187,8 +187,9 @@ int main()
         }
     }
 
-    print("---------------");
-    cout<<"answer: "<<ans<<" trees are visible"<<endl;
+    // print("---------------");
+    // cout<<"answer: "<<ans<<" trees are visible"<<endl;
+    cout<<ans<<endl;
 
     
 

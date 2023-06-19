@@ -49,7 +49,7 @@ template <typename T> string type_name();
         cin >> ar[i];
 #define txtio                         \
     freopen("input.txt", "r", stdin); \
-    freopen("output.txt", "w", stdout);
+    freopen("output2.txt", "w", stdout);
 
 const int mod = 1e9 + 7;
 const int MOD = 5; // mod_division
@@ -173,8 +173,8 @@ int main()
         }
     }
 
-    print("---------------");
-    cout<<"answer: "<<mx_ans<<endl;
+    // print("---------------");
+    cout<<mx_ans<<endl;
 
     
 
